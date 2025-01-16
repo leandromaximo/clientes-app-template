@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
-import {ClientesService} from '../../clientes.service';
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {Observable} from "rxjs";
+import { ClientesService } from '../../clientes.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-clients-form',
@@ -30,7 +30,7 @@ export class ClientsFormComponent implements OnInit {
       this.id = urlParams['id'];
       if (this.id) {
         this.service
-          .getClienteByyId(this.id)
+          .getClienteById(this.id)
           .subscribe(
             response => this.cliente = response,
             errorResponse => this.cliente = new Cliente()
@@ -40,7 +40,7 @@ export class ClientsFormComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.id){
+    if (this.id){
       this.service
         .atualizar(this.cliente)
         .subscribe( response => {
@@ -64,7 +64,7 @@ export class ClientsFormComponent implements OnInit {
   }
 
   voltarParaListar(){
-    this.router.navigate(['/clientes-lista']);
+    this.router.navigate(['/clientes/lista']);
   }
 
 }
